@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="ASSEMBLY">
+    <link name="ALKUT_armbase">
+        <inertial>
+            <origin xyz="0.004392225231481817 -0.01422742283088251 -0.0006438110774825035" rpy="0.0 2.223237049489075e-113 0.0" />
+            <mass value="0.461910013936637" />
+            <inertia ixx="0.0003075728479044783" iyy="0.00040563115301110036" izz="0.0003722463637850504" ixy="5.298811027529271e-05" iyz="-1.0325045876233632e-05" ixz="1.699306977943557e-05" />
+        </inertial>
+        <visual name="ALKUT_armbase_visual">
+            <origin xyz="-0.005250129340027705 0.03364363985685577 0.0009232167950474412" rpy="3.141592653589789 0.24471893676488368 -1.0829313158005796e-15" />
+            <geometry>
+                <mesh filename="meshes/ALKUT_armbase.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="ALKUT_armbase_collision">
+            <origin xyz="-0.005250129340027705 0.03364363985685577 0.0009232167950474412" rpy="3.141592653589789 0.24471893676488368 -1.0829313158005796e-15" />
+            <geometry>
+                <mesh filename="meshes/ALKUT_armbase.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Systems_gate">
+        <inertial>
+            <origin xyz="0.018174334216628757 -0.00020545949361027382 0.017366469304385176" rpy="0.0 7.214816717400227e-81 0.0" />
+            <mass value="0.16904533352244253" />
+            <inertia ixx="9.104282885270591e-05" iyy="0.0001815201615161608" izz="9.103639830333973e-05" ixy="4.776744028536781e-07" iyz="-4.3369936483269146e-08" ixz="5.529309552445434e-05" />
+        </inertial>
+        <visual name="Systems_gate_visual">
+            <origin xyz="0.05618812644339486 0.005327942733438338 -0.11240186221737887" rpy="-3.1328663395968963 -0.7853600871865067 -0.012341028231671783" />
+            <geometry>
+                <mesh filename="meshes/Systems_gate.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Systems_gate_collision">
+            <origin xyz="0.05618812644339486 0.005327942733438338 -0.11240186221737887" rpy="-3.1328663395968963 -0.7853600871865067 -0.012341028231671783" />
+            <geometry>
+                <mesh filename="meshes/Systems_gate.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="ALKUT_ARM2">
+        <inertial>
+            <origin xyz="0.014562267780249698 -0.015655297652689183 0.0628963853499188" rpy="0.0 -0.0 -3.3036320459721193e-60" />
+            <mass value="0.21522109096762693" />
+            <inertia ixx="0.0005305458698339864" iyy="0.0005859022489630474" izz="9.683268470041251e-05" ixy="1.6721952600130645e-05" iyz="3.999745533698248e-05" ixz="-0.00013411891612775256" />
+        </inertial>
+        <visual name="ALKUT_ARM2_visual">
+            <origin xyz="-0.0934222420495484 0.039848103825119545 -0.11498199981537081" rpy="3.141592653589789 0.3336352796732803 -0.24471893676488476" />
+            <geometry>
+                <mesh filename="meshes/ALKUT_ARM2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="ALKUT_ARM2_collision">
+            <origin xyz="-0.0934222420495484 0.039848103825119545 -0.11498199981537081" rpy="3.141592653589789 0.3336352796732803 -0.24471893676488476" />
+            <geometry>
+                <mesh filename="meshes/ALKUT_ARM2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="ALKUT_ARM3">
+        <inertial>
+            <origin xyz="0.08843325739568651 -0.005161036761772451 0.012153182161213695" rpy="0.0 -6.162975822039155e-33 -8.552847072295026e-50" />
+            <mass value="0.2664066630042031" />
+            <inertia ixx="0.00016764484930982532" iyy="0.001114654799692388" izz="0.0010236958907884892" ixy="6.373720246899413e-05" iyz="2.094313129491143e-05" ixz="-0.00029858947273674904" />
+        </inertial>
+        <visual name="ALKUT_ARM3_visual">
+            <origin xyz="-0.0033130544164205844 -0.019085320238376724 -0.015856569820963225" rpy="-1.5608866275691313 -0.24452222994408765 -0.04091197313850169" />
+            <geometry>
+                <mesh filename="meshes/ALKUT_ARM3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="ALKUT_ARM3_collision">
+            <origin xyz="-0.0033130544164205844 -0.019085320238376724 -0.015856569820963225" rpy="-1.5608866275691313 -0.24452222994408765 -0.04091197313850169" />
+            <geometry>
+                <mesh filename="meshes/ALKUT_ARM3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Base">
+        <inertial>
+            <origin xyz="-0.004225328361919232 0.04412948168047964 -0.0006154361378889025" rpy="0.0 0.0 0.0" />
+            <mass value="1.3681824208452278" />
+            <inertia ixx="0.0021998645901892266" iyy="0.005542889048736739" izz="0.0041118886800065105" ixy="6.150804612622957e-05" iyz="9.016794220462873e-06" ixz="1.474575158063492e-05" />
+        </inertial>
+        <visual name="Base_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/Base.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Base_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/Base.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="Base_Rigid-4" type="fixed">
+        <origin xyz="0.06268081324497196 0.06968460038521379 0.001743042332830349" rpy="-5.828968252863496e-15 0.7853981633974452 3.141592653589789" />
+        <parent link="Base" />
+        <child link="Systems_gate" />
+    </joint>
+    <joint name="Base_Revolute-5" type="continuous">
+        <origin xyz="-0.03395068675502803 0.07179510038521382 -0.0003569576671696417" rpy="-3.141592653589789 -3.6096140129570125e-32 7.589415207398533e-18" />
+        <parent link="Base" />
+        <child link="ALKUT_armbase" />
+        <axis xyz="-5.473822126268817e-48 -1.0 0.0" />
+    </joint>
+    <joint name="ALKUT_armbase_Revolute-6" type="continuous">
+        <origin xyz="0.017425099999999995 -0.03569999999999997 -0.023831880000000007" rpy="1.5707963267948966 1.9567448234974316e-31 -4.1878511460097706e-30" />
+        <parent link="ALKUT_armbase" />
+        <child link="ALKUT_ARM2" />
+        <axis xyz="-0.242284 -0.970205 -1.780006121609783e-30" />
+    </joint>
+    <joint name="ALKUT_ARM2_Revolute-7" type="continuous">
+        <origin xyz="0.03575284 -0.012213729999999999 0.13247643" rpy="1.5707963267948966 4.1878511460097706e-30 -3.082536381517628e-17" />
+        <parent link="ALKUT_ARM2" />
+        <child link="ALKUT_ARM3" />
+        <axis xyz="0.24228399999999994 -7.027538654048e-18 -0.9702049999999999" />
+    </joint>
+</robot>
