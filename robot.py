@@ -69,14 +69,14 @@ def map_imu_to_joints(tilt_x, tilt_y):
     
     if len(controllable_joints) >= 2:
         # Map tilt_x to first joint (base rotation or shoulder)
-        joint_targets[0] = math.radians(tilt_y * 2)  # Scale factor of 2
+        joint_targets[0] = math.radians(tilt_y *4)  # Scale factor of 2
         
         # Map tilt_y to second joint (shoulder or elbow)
-        joint_targets[1] = math.radians(tilt_x * 2)
+        joint_targets[1] = math.radians(tilt_x *4)
     
     if len(controllable_joints) >= 3:
         # Third joint - could be elbow
-        joint_targets[2] = math.radians(tilt_x * 1.5)
+        joint_targets[2] = math.radians(tilt_x * 3)
     
     if len(controllable_joints) >= 4:
         # Fourth joint - could be wrist
