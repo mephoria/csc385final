@@ -132,7 +132,25 @@ int main(void) {
         int16_t ay = (int16_t)(a[3] << 8 | a[2]);
         int16_t az = (int16_t)(a[5] << 8 | a[4]);
 
-        sprintf(msg, "G: %6d %6d %6d  A: %6d %6d %6d\r\n", gx, gy, gz, ax, ay, az);
+        // Use integer math to avoid floating point issues
+        // Scale: divide by 300 and multiply by 100 to get 2 decimal places as integers
+        int32_t tilt_x_int = ((int32_t)ay * 100) / 300;  // Forward/backward tilt * 100
+        int32_t tilt_y_int = ((int32_t)ax * 100) / 300;  // Left/right tilt * 100
+        
+        // Clamp to reasonable range (-9000 to +9000 represents -90.00 to +90.00 degrees)
+        if (tilt_x_int > 9000) tilt_x_int = 9000;
+        if (tilt_x_int < -9000) tilt_x_int = -9000;
+        if (tilt_y_int > 9000) tilt_y_int = 9000;
+        if (tilt_y_int < -9000) tilt_y_int = -9000;
+
+        // Send formatted data: convert back to xx.yy format
+        sprintf(msg, "TILT_X:%d.%02d,TILT_Y:%d.%02d\r\n", 
+                (int)(tilt_x_int/100), (int)(abs(tilt_x_int)%100),
+                (int)(tilt_y_int/100), (int)(abs(tilt_y_int)%100));
+        HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+
+        // Optional: Also send raw data for debugging
+        sprintf(msg, "RAW A:%d %d %d\r\n", ax, ay, az);
         HAL_UART_Transmit(&huart1, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
 
         HAL_Delay(200); // Slower rate for debugging

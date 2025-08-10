@@ -41,13 +41,15 @@ for i in range(num_joints):
 print(f"\nControllable joints: {controllable_joints}")
 print(f"Joint names: {joint_names}")
 
-# Initialize serial connection (uncomment when ready)
-# try:
-#     ser = serial.Serial('COM3', 115200, timeout=1)  # Change COM port as needed
-#     print("Connected to STM32")
-# except:
-#     print("Could not connect to STM32")
-#     ser = None
+# Initialize serial connection
+try:
+    # Windows: 'COM3', 'COM4', etc.
+    # Linux/Mac: '/dev/ttyUSB0', '/dev/ttyACM0', etc.
+    ser = serial.Serial('COM4', 115200, timeout=1)  # Change COM port as needed
+    print("Connected to STM32")
+except:
+    print("Could not connect to STM32 - using demo mode")
+    ser = None
 
 # Robot control parameters
 current_positions = [0.0] * len(controllable_joints)  # Current target positions
@@ -139,25 +141,25 @@ print("\nStarting robot control...")
 print("Demo mode: Robot will move in a pattern")
 print("Uncomment serial code to use IMU control")
 
-demo_mode = True  # Set to False when using IMU
+demo_mode = False  # Set to True if you want demo even with IMU connected
 
 while True:
     imu_connected = False
     
-    # Uncomment this section when you want to use IMU control
-    # if ser and ser.in_waiting > 0:
-    #     try:
-    #         line = ser.readline().decode('utf-8')
-    #         tilt_x, tilt_y = parse_imu_data(line)
-    #         
-    #         if tilt_x is not None and tilt_y is not None:
-    #             target_positions = map_imu_to_joints(tilt_x, tilt_y)
-    #             smooth_move_joints(target_positions)
-    #             imu_connected = True
-    #             
-    #             print(f"IMU: X={tilt_x:6.2f}°, Y={tilt_y:6.2f}° -> Joints: {[f'{p:6.2f}' for p in current_positions[:3]]}")
-    #     except Exception as e:
-    #         print(f"Error: {e}")
+    # IMU control when serial data is available
+    if ser and ser.in_waiting > 0:
+        try:
+            line = ser.readline().decode('utf-8')
+            tilt_x, tilt_y = parse_imu_data(line)
+            
+            if tilt_x is not None and tilt_y is not None:
+                target_positions = map_imu_to_joints(tilt_x, tilt_y)
+                smooth_move_joints(target_positions)
+                imu_connected = True
+                
+                print(f"IMU: X={tilt_x:6.2f}°, Y={tilt_y:6.2f}° -> Joints: {[f'{p:6.2f}' for p in current_positions[:3]]}")
+        except Exception as e:
+            print(f"Serial Error: {e}")
     
     # Demo mode when no IMU data
     if demo_mode and not imu_connected:
